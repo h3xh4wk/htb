@@ -5,7 +5,7 @@ with open("./usb_codes.pkl", "rb") as f:
 lines=["","","",""]
 pos=0
 
-for l in open("newkeystrokes.txt", "r").readlines(): 
+for l in open("keystrokes.txt", "r").readlines(): 
     code=int(l[6:8],16) 
     if code==0: 
         continue 
