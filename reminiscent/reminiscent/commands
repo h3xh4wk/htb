@@ -1,0 +1,3 @@
+unzip reminiscent.zip -d reminiscent
+volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 filescan > filescan_results
+strings file.496.0xfffffa80022ac740.resume.pdf.lnk.dat > sourcefile2

@@ -1,0 +1,132 @@
+ 1094  volatility -f flounder-pc-memdump.elf psxview
+ 1095  volatility -f flounder-pc-memdump.elf imageinfo
+ 1096  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 imageinfo
+ 1097  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 psxview
+ 1098  clear
+ 1099  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 pslist > imgpslist
+ 1100  vim imgpslist 
+ 1101  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 connections
+ 1102  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 connscan
+ 1103  volatility -f flounder-pc-memdump.elf --profile=Win7SP2x64 connscan
+ 1104  volatility -f flounder-pc-memdump.elf --profile=Win7SP2x86 connscan
+ 1105  volatility -f flounder-pc-memdump.elf --profile=WinSP2x86 connscan
+ 1106  volatility -f flounder-pc-memdump.elf --profile=WinXPSP2x86 connscan
+ 1107  volatility -f flounder-pc-memdump.elf imageinfo
+ 1108  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2012
+ 1109  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2044
+ 1110  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2044 > malfind_2044
+ 1111  clear
+ 1112  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 -p 2044 -D dump_2044
+ 1113  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 memdump -p 2044 -D dump_2044
+ 1114  mkdir dump_2044
+ 1115  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 memdump -p 2044 -D dump_2044
+ 1116  file dump_2044/*.*
+ 1117  ls -lah dump_2044/2044.dmp 
+ 1118  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2044 _D > dump
+ 1119  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2044 -D > dump
+ 1120  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2044 -D dump
+ 1121  mkdir dump
+ 1122  ls dump
+ 1123  ls -la dump
+ 1124  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2044 -D dump
+ 1125  cat dump
+ 1126  rm dump
+ 1127  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2044 -D dump
+ 1128  mkdir dump
+ 1129  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2044 -D dump
+ 1130  ls dump
+ 1131  file dump/*.*
+ 1132  vim dump/process.0xfffffa80020bb630.0x26a0000.dmp 
+ 1133  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 496 -D dump
+ 1134  file dump/*.*
+ 1135  ls -ltr dump
+ 1136  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 malfind -p 2812 -D dump
+ 1137  ls -ltr dump
+ 1138  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 handles -t Mutant -s
+ 1139  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 handles -p 2044 -t Mutant -s
+ 1140  ls dump
+ 1141  find dump/ -exec string {} \;
+ 1142  find dump/ -exec strings {} \;
+ 1143  find ./dump -exec strings {} \;
+ 1144  mkdir vad_dump && volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 vaddump -p2044 -D vad_dump
+ 1145  clear
+ 1146  find ./vad_dump/ -exec strings {} \;
+ 1147  find ./vad_dump/ -exec strings {} > vadstrings \;
+ 1148  cat vadstrings 
+ 1149  clear
+ 1150  vim vadstrings 
+ 1151  mkdir vad_dump && volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 vaddump -p2812 -D vad_dump_thunder
+ 1152  mkdir vad_dump_thunder && volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 vaddump -p2812 -D vad_dump_thunder
+ 1153  ls -la
+ 1154  find ./vad_dump_thunder/ -exec strings {} > vadstrings_thunder \;
+ 1155  vim vadstrings_thunder 
+ 1156  clear
+ 1157  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 handles -p496 -t Mutant -s
+ 1158  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 handles -p 496 -t Mutant -s
+ 1159  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 handles -p 2812 -t Mutant -s
+ 1160  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 filescan -p 2812
+ 1161  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 filescan
+ 1162  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 filescan > filescan_results
+ 1163  vim filescan_results 
+ 1164  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 netscan
+ 1165  strings Resume.eml 
+ 1166  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 handles -p 2752 -t Mutant -s
+ 1167  mkdir vad_dump_powershell && volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 vaddump -p2812 -D vad_dump_powershell
+ 1168  rm -r vad_dump_powershell/
+ 1169  mkdir vad_dump_powershell && volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 vaddump -p2752 -D vad_dump_powershell
+ 1170  file ./vad_dump_powershell/
+ 1171  file ./vad_dump_powershell/*.dmp
+ 1172  find ./vad_dump_powershell/ -exec strings {} > vadstrings_powershell \;
+ 1173  vim vadstrings_powershell 
+ 1174  file vad_dump_powershell/
+ 1175  file vad_dump_powershell/*.*
+ 1176  file vad_dump_powershell/*.* | grep DLL
+ 1177  file vad_dump_powershell/*.* | grep firmware
+ 1178  mkdir dllsforvirustotal
+ 1179  cp vad_dump_powershell/powershell.exe.1fc39060.0x0000000000110000-0x000000000011ffff.dmp vad_dump_powershell/powershell.exe.1fc39060.0x0000000001cf0000-0x0000000001d5ffff.dmp dllsforvirustotal/
+ 1180  mkdir dmplnk
+ 1181  volatility -f flounder-pc-memdump.elf dumpfiles -n -i -r \\.lnk --dump_dir dmplnk/
+ 1182  volatility -f flounder-pc-memdump.elf dumpfiles -n -i -r \\.lnk --dump-dir dmplnk/
+ 1183  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 dumpfiles -n -i -r \\.lnk dump-dir dmplnk/
+ 1184  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 dumpfiles -n -i -r \\.lnk -dump-dir dmplnk/
+ 1185  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 dumpfiles -n -i -r \\.lnk --dump-dir dmplnk/
+ 1186  cd dmplnk/
+ 1187  ls
+ 1188  strings file.496.0xfffffa80017dcc60.resume.pdf.lnk.vacb
+ 1189  strings file.496.0xfffffa80022ac740.resume.pdf.lnk.dat
+ 1190  base64 -d file.496.0xfffffa80022ac740.resume.pdf.lnk.dat
+ 1191  strings file.496.0xfffffa80017dcc60.resume.pdf.lnk.vacb > sourcefile1
+ 1192  base64 -d file.496.0xfffffa80022ac740.resume.pdf.lnk.dat > sourcefile2
+ 1193  strings file.496.0xfffffa80022ac740.resume.pdf.lnk.dat > sourcefile2
+ 1194  clear
+ 1195  source ~/venvs/htb/bin/activate
+ 1196  clear
+ 1197  ipython
+ 1198  clear
+ 1199  cat sourcefile1 |  perl -pe | base64 -d 
+ 1200  cat sourcefile1 |  perl -pe 'print '| base64 -d 
+ 1201  vim sourcefile1 
+ 1202  vim sourcefile1_base64 | perl -pe 'print ' | base64 -d 
+ 1203  cat sourcefile1_base64 | perl -pe 'print ' | base64 -d 
+ 1204  ls 
+ 1205  cd dmplnk/
+ 1206  cat sourcefile1_base64 | perl -pe 'print ' | base64 -d 
+ 1207  cat sourcefile1_base64 | perl -pe 'print ' | base64 -d > sourcefile1_base64decode
+ 1208  vim sourcefile1_base64decode 
+ 1209  clear
+ 1210  vim sourcefile2 
+ 1211  cat sourcefile2_base64 | perl -pe 'print ' | base64 -d > sourcefile2_base64decode
+  1180  mkdir dmplnk
+ 1181  volatility -f flounder-pc-memdump.elf dumpfiles -n -i -r \\.lnk --dump_dir dmplnk/
+ 1182  volatility -f flounder-pc-memdump.elf dumpfiles -n -i -r \\.lnk --dump-dir dmplnk/
+ 1183  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 dumpfiles -n -i -r \\.lnk dump-dir dmplnk/
+ 1184  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 dumpfiles -n -i -r \\.lnk -dump-dir dmplnk/
+ 1185  volatility -f flounder-pc-memdump.elf --profile=Win7SP1x64 dumpfiles -n -i -r \\.lnk --dump-dir dmplnk/
+ 1186  cd dmplnk/
+ 1187  ls
+ 1188  strings file.496.0xfffffa80017dcc60.resume.pdf.lnk.vacb
+ 1189  strings file.496.0xfffffa80022ac740.resume.pdf.lnk.dat
+ 1190  base64 -d file.496.0xfffffa80022ac740.resume.pdf.lnk.dat
+ 1191  strings file.496.0xfffffa80017dcc60.resume.pdf.lnk.vacb > sourcefile1
+ 1192  base64 -d file.496.0xfffffa80022ac740.resume.pdf.lnk.dat > sourcefile2
+ 
